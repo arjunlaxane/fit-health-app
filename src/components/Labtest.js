@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Pathology from './Pathology';
 import '../App.css';
 
-const Labtest = () => {
+const Labtest = ({ labtest }) => {
   let Initial_Labs = [
     {
       dezignation: 'Doctor',

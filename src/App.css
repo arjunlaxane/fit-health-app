@@ -61,3 +61,21 @@
   align-items: center;
   justify-content: space-evenly;
 }
+.expertinfo {
+  /* margin: 10px; */
+  /* height: 100%; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.info-image {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+.backbtn {
+  text-align: center;
+}

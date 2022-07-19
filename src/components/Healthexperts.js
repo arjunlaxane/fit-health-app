@@ -89,8 +89,8 @@ const Healthexperts = () => {
 
   return (
     <div className="healthexperts-list">
-      {healthexperts.map(healthexpert => (
-        <Experts healthexpert={healthexpert} />
+      {healthexperts.map((healthexpert, index) => (
+        <Experts healthexpert={healthexpert} key={index} id={index} />
       ))}
     </div>
   );
