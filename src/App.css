@@ -79,3 +79,52 @@
 .backbtn {
   text-align: center;
 }
+
+.consultation-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.consultbtn {
+  text-align: center;
+}
+
+.mobilenumber {
+  text-align: center;
+}
+.healthproblem {
+  width: 50%;
+}
+
+.healthproblem-container {
+  text-align: center;
+}
+
+.payment-container {
+  margin: 20px auto;
+  width: 1000px;
+  height: 500px;
+  border: 2px solid white;
+}
+
+.payment-option {
+  width: 300px;
+  height: 500px;
+  /* border: 2px solid white; */
+}
+h4 {
+  cursor: pointer;
+}
+
+.login-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 500px;
+  height: 500px;
+  /* border: 2px solid white; */
+}
+.login-heading {
+  text-align: center;
+}

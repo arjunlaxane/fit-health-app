@@ -29,8 +29,18 @@ const Experts = ({ healthexpert, id }) => {
           <InfoIcon />
         </IconButton>
 
-        <Button>Appointment</Button>
-        <Button>Video Consult</Button>
+        <Button
+          variant="outlined"
+          onClick={() => navigate(`/health-experts/appointment/${id}`)}
+        >
+          Appointment
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => navigate(`/health-experts/video-consultation/${id}`)}
+        >
+          Video Consult
+        </Button>
       </div>
     </div>
   );
