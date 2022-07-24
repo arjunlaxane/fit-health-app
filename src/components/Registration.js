@@ -2,21 +2,23 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import '../App.css';
 
 const Registration = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      phone: '',
-      message: '',
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required('This is required'),
-      lastName: Yup.string().required('This is required'),
-      phone: Yup.number().required('This is required'),
-      message: Yup.string().required('This is required'),
+      first_name: Yup.string().required('This is required'),
+      last_name: Yup.string().required('This is required'),
+      email: Yup.string().email().required('This is required'),
+      password: Yup.string().required('This is required'),
     }),
     onSubmit: values => {
       console.log('Form submitted', values);
@@ -25,65 +27,85 @@ const Registration = () => {
 
   return (
     <div>
-      <Typography variant="h4" mt={6} mb={6}>
+      <Typography variant="h4" mt={6} mb={6} textAlign="center">
         Register
       </Typography>
 
-      <h3>
+      <h3 style={{ textAlign: 'center' }}>
         <Link to="/experts/register">Want to be a fit health expert?</Link>
       </h3>
 
-      <Box component="form" onSubmit={formik.handleSubmit}>
-        <TextField
-          label="First Name"
-          type="text"
-          variant="outlined"
-          sx={{ width: '300px', m: 1 }}
-          name="firstName"
-          onChange={formik.handleChange}
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          onBlur={formik.handleBlur}
-          helperText={formik.touched.firstName && formik.errors.firstName}
-        />
-        <TextField
-          label="Last Name"
-          type="text"
-          variant="outlined"
-          sx={{ width: '300px', m: 1 }}
-          name="lastName"
-          onChange={formik.handleChange}
-          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-          onBlur={formik.handleBlur}
-          helperText={formik.touched.lastName && formik.errors.lastName}
-        />
-        <TextField
-          label="Phone Number"
-          type="number"
-          variant="outlined"
-          sx={{ width: '300px', m: 1 }}
-          name="phone"
-          onChange={formik.handleChange}
-          error={formik.touched.phone && Boolean(formik.errors.phone)}
-          helperText={formik.touched.phone && formik.errors.phone}
-          onBlur={formik.handleBlur}
-        />
-
-        <TextField
-          label="Create Password"
-          type="number"
-          variant="outlined"
-          sx={{ width: '300px', m: 1 }}
-          name="phone"
-          onChange={formik.handleChange}
-          error={formik.touched.phone && Boolean(formik.errors.phone)}
-          helperText={formik.touched.phone && formik.errors.phone}
-          onBlur={formik.handleBlur}
-        />
-
-        <Button size="large" variant="contained" type="sumbit" sx={{ m: 1 }}>
-          Submit
-        </Button>
-      </Box>
+      <div className="user-register">
+        <Box component="form" onSubmit={formik.handleSubmit}>
+          <div>
+            <TextField
+              label="First Name"
+              type="text"
+              variant="outlined"
+              sx={{ width: '30vw', m: 1 }}
+              name="first_name"
+              onChange={formik.handleChange}
+              error={
+                formik.touched.first_name && Boolean(formik.errors.first_name)
+              }
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.first_name && formik.errors.first_name}
+            />
+          </div>
+          <div>
+            <TextField
+              label="Last Name"
+              type="text"
+              variant="outlined"
+              sx={{ width: '30vw', m: 1 }}
+              name="last_name"
+              onChange={formik.handleChange}
+              error={
+                formik.touched.last_name && Boolean(formik.errors.last_name)
+              }
+              onBlur={formik.handleBlur}
+              helperText={formik.touched.last_name && formik.errors.last_name}
+            />
+          </div>
+          <div>
+            <TextField
+              label="Email ID"
+              type="email"
+              variant="outlined"
+              sx={{ width: '30vw', m: 1 }}
+              name="email"
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+              onBlur={formik.handleBlur}
+            />
+          </div>
+          <div>
+            <TextField
+              label="Password"
+              type="text"
+              variant="outlined"
+              sx={{ width: '30vw', m: 1 }}
+              name="password"
+              onChange={formik.handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+              onBlur={formik.handleBlur}
+            />
+          </div>
+          <div>
+            <Button
+              size="large"
+              variant="contained"
+              type="sumbit"
+              // onClick={() => navigate('/signup')}
+              sx={{ m: 1 }}
+            >
+              Submit
+            </Button>
+          </div>
+        </Box>
+      </div>
     </div>
   );
 };

@@ -29,7 +29,7 @@ const Expertinfo = ({ expert }) => {
           <h3>Qualification: {expertdetails.qualification}</h3>
           <h3>Specialization: {expertdetails.specialization}</h3>
           <h3>Email ID: {expertdetails.email}</h3>
-          <h3>Experience: {expertdetails.experience}</h3>
+          <h3>Experience(year): {expertdetails.experience}</h3>
           <h3>Gender: {expertdetails.gender}</h3>
           <h3>Rating: {expertdetails.rating}⭐</h3>
         </div>

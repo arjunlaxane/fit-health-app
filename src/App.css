@@ -128,3 +128,29 @@ h4 {
 .login-heading {
   text-align: center;
 }
+
+.expert-register-container {
+  /* border: 2px solid white; */
+  margin-top: 20px;
+}
+
+.expert-register-form {
+  text-align: center;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+}
+
+.register-link {
+  text-align: center;
+}
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-register {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}

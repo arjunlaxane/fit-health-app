@@ -1,98 +1,107 @@
 import React, { useState } from 'react';
 import Experts from './Experts';
-const Healthexperts = () => {
-  let Initial_Health_Experts = [
-    {
-      dezignation: 'Doctor',
-      first_name: 'Suresh',
-      last_name: 'Kumar',
-      email: 'suresh@gmail.com',
-      gender: 'Male',
-      specialization: 'General physician',
-      qualification: 'MBBS Medicine',
-      experience: '4 Years',
-      image:
-        'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
-      rating: 5,
-    },
-    {
-      dezignation: 'Doctor',
-      first_name: 'Harmanprit',
-      last_name: 'Kaur',
-      email: 'harman@gmail.com',
-      gender: 'Female',
-      specialization: 'General physician',
-      qualification: 'MBBS Medicine',
-      experience: '6 Years',
-      rating: 5,
+const Healthexperts = ({ expert, setExpert }) => {
+  const [dezignation, setDezignation] = useState('');
+  const [email, setEmail] = useState('');
+  const [experience, setExperience] = useState('');
+  const [first_name, setFirst_Name] = useState('');
+  const [gender, setGender] = useState('');
+  const [image, setImage] = useState('');
+  const [rating, setRating] = useState('');
+  const [qualification, setQualification] = useState('');
+  const [last_name, setLast_Name] = useState('');
+  const [specialization, setSpecialization] = useState('');
 
-      image:
-        'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
-    },
-    {
-      dezignation: 'Doctor',
-      first_name: 'Raju',
-      last_name: 'Seth',
-      email: 'raju@gmail.com',
-      gender: 'Male',
-      specialization: 'Gynecologist',
-      qualification: 'MD Gynecology',
-      experience: '2 Years',
-      rating: 5,
-      image:
-        'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
-    },
-    {
-      dezignation: 'Doctor',
-      first_name: 'Priyal',
-      last_name: 'Pofali',
-      email: 'priyal@gmail.com',
-      gender: 'Female',
-      specialization: 'Gynecologist',
-      qualification: 'MD Gynecology',
-      experience: '2 Years',
-      image:
-        'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
-      rating: 5,
-    },
-    {
-      rating: 5,
-      dezignation: 'Doctor',
-      first_name: 'Gopal',
-      last_name: 'Kishan',
-      email: 'gopal@gmail.com',
-      gender: 'Male',
-      specialization: 'Pediatrician',
-      qualification: 'DM Pediatrician',
-      experience: '4 Years',
-      image:
-        'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
-    },
-    {
-      dezignation: 'Doctor',
-      first_name: 'Anushka',
-      last_name: 'Sharma',
-      email: 'anushka@gmail.com',
-      gender: 'Female',
-      specialization: 'Pediatrician',
-      rating: 5,
+  const AddExperts = () => {
+    const newExperts = {
+      dezignation: dezignation,
+      email: email,
+      experience: experience,
+      first_name: first_name,
+      gender: gender,
+      image: image,
+      last_name: last_name,
+      qualification: qualification,
+      rating: rating,
+      specialization: specialization,
+    };
 
-      qualification: 'DM Pediatrician',
-      image:
-        'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
-
-      experience: '5 Years',
-    },
-  ];
-
-  const [healthexperts, setHealthExperts] = useState(Initial_Health_Experts);
-
+    setExpert([...expert, newExperts]);
+  };
+  console.log(expert);
   return (
-    <div className="healthexperts-list">
-      {healthexperts.map((healthexpert, index) => (
-        <Experts healthexpert={healthexpert} key={index} id={index} />
-      ))}
-    </div>
+    <>
+      <div className="add-expert-form">
+        <input
+          onChange={event => {
+            setQualification(event.target.value);
+          }}
+          placeholder="Qualification"
+        />
+        <input
+          onChange={event => {
+            setSpecialization(event.target.value);
+          }}
+          placeholder="Specialization"
+        />
+        <input
+          onChange={event => {
+            setImage(event.target.value);
+          }}
+          placeholder="Image"
+        />
+        <input
+          onChange={event => {
+            setGender(event.target.value);
+          }}
+          placeholder="Gender"
+        />
+        <input
+          onChange={event => {
+            setDezignation(event.target.value);
+          }}
+          placeholder="Designation"
+        />
+
+        <input
+          onChange={event => {
+            setEmail(event.target.value);
+          }}
+          placeholder="Email"
+        />
+        <input
+          onChange={event => {
+            setFirst_Name(event.target.value);
+          }}
+          placeholder="First Name"
+        />
+        <input
+          onChange={event => {
+            setLast_Name(event.target.value);
+          }}
+          placeholder="Last Name"
+        />
+        <input
+          onChange={event => {
+            setExperience(event.target.value);
+          }}
+          placeholder="Experience"
+        />
+        <input
+          onChange={event => {
+            setRating(event.target.value);
+          }}
+          placeholder="Rating"
+        />
+        <button onClick={AddExperts}>Add Movie</button>
+      </div>
+
+      <div className="healthexperts-list">
+        {expert.map((healthexpert, index) => (
+          <Experts healthexpert={healthexpert} key={index} id={index} />
+        ))}
+      </div>
+    </>
   );
 };
 

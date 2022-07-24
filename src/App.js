@@ -16,6 +16,7 @@ import Expertinfo from './components/Expertinfo';
 import Videoconsult from './components/Videoconsult';
 import Appointment from './components/Appointment';
 import Payment from './components/Payment';
+import { ExpertRegister } from './components/ExpertRegister';
 
 function App() {
   let Initial_Health_Experts = [
@@ -27,7 +28,7 @@ function App() {
       gender: 'Male',
       specialization: 'General physician',
       qualification: 'MBBS Medicine',
-      experience: '4 Years',
+      experience: '4',
       image:
         'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
       rating: 5,
@@ -40,7 +41,7 @@ function App() {
       gender: 'Female',
       specialization: 'General physician',
       qualification: 'MBBS Medicine',
-      experience: '6 Years',
+      experience: '6',
       rating: 5,
 
       image:
@@ -54,7 +55,7 @@ function App() {
       gender: 'Male',
       specialization: 'Gynecologist',
       qualification: 'MD Gynecology',
-      experience: '2 Years',
+      experience: '2',
       rating: 5,
       image:
         'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
@@ -67,7 +68,7 @@ function App() {
       gender: 'Female',
       specialization: 'Gynecologist',
       qualification: 'MD Gynecology',
-      experience: '2 Years',
+      experience: '2',
       image:
         'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
       rating: 5,
@@ -81,7 +82,7 @@ function App() {
       gender: 'Male',
       specialization: 'Pediatrician',
       qualification: 'DM Pediatrician',
-      experience: '4 Years',
+      experience: '4',
       image:
         'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
     },
@@ -98,7 +99,7 @@ function App() {
       image:
         'https://pikwizard.com/photos/portrait-of-male-doctor-sitting-at-desk--a3d68e40ac7238a3f52ecb2c4ab27995-l.jpg',
 
-      experience: '5 Years',
+      experience: '5',
     },
   ];
 
@@ -210,7 +211,12 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
 
-              <Route path="/health-experts" element={<Healthexperts />} />
+              <Route
+                path="/health-experts"
+                element={
+                  <Healthexperts expert={expert} setExpert={setExpert} />
+                }
+              />
 
               <Route path="/register" element={<Registration />} />
 
@@ -235,6 +241,8 @@ function App() {
               />
 
               <Route path="/signup" element={<Login />} />
+
+              <Route path="/experts/register" element={<ExpertRegister />} />
             </Routes>
           </section>
         </div>
