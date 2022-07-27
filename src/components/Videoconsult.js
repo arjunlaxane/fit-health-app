@@ -8,24 +8,19 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 const Videoconsult = ({ expert }) => {
   const { id } = useParams();
-  // console.log(useParams());
-  // console.log(id);
 
-  // const payment = expert[id];
   //payment not included in array
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
       phone: '',
-      message: '',
+      issue: '',
+      date: '',
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required('This is required'),
-      lastName: Yup.string().required('This is required'),
+      date: Yup.date().required('This is required'),
       phone: Yup.number().required('This is required'),
-      message: Yup.string().required('This is required'),
+      issue: Yup.string().required('This is required'),
     }),
     onSubmit: values => {
       console.log('Form submitted', values);
@@ -34,39 +29,17 @@ const Videoconsult = ({ expert }) => {
 
   return (
     <div className="consultation-container">
-      <Typography variant="h4" mt={6} mb={6} textAlign="center">
-        Consult our fit health
+      <Typography variant="h5" mt={6} mb={6} textAlign="center">
+        Consult our fit health expert
       </Typography>
 
       <Box component="form" onSubmit={formik.handleSubmit}>
-        {/* <TextField
-          label="First Name"
-          type="text"
-          variant="outlined"
-          sx={{ width: '300px', m: 1 }}
-          name="firstName"
-          onChange={formik.handleChange}
-          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-          onBlur={formik.handleBlur}
-          helperText={formik.touched.firstName && formik.errors.firstName}
-        />
-        <TextField
-          label="Last Name"
-          type="text"
-          variant="outlined"
-          sx={{ width: '300px', m: 1 }}
-          name="lastName"
-          onChange={formik.handleChange}
-          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-          onBlur={formik.handleBlur}
-          helperText={formik.touched.lastName && formik.errors.lastName}
-        /> */}
         <div className="mobilenumber">
           <TextField
             label="Enter mobile Number"
             type="number"
             variant="outlined"
-            sx={{ width: '200px', m: 1 }}
+            sx={{ width: '250px', m: 1 }}
             name="phone"
             onChange={formik.handleChange}
             error={formik.touched.phone && Boolean(formik.errors.phone)}
@@ -75,18 +48,31 @@ const Videoconsult = ({ expert }) => {
           />
         </div>
         <div className="healthproblem-container">
+          <p sx={{ textAlign: 'center' }}>Choose Appointment date</p>
+          <TextField
+            type="date"
+            variant="outlined"
+            sx={{ width: '250px', m: 1 }}
+            name="date"
+            onChange={formik.handleChange}
+            error={formik.touched.date && Boolean(formik.errors.date)}
+            helperText={formik.touched.date && formik.errors.date}
+            onBlur={formik.handleBlur}
+          />
+        </div>
+        <div className="healthproblem-container">
           <TextField
             className="healthproblem"
-            label="Tell us your symptom or health problem"
+            label="Type your issue"
             type="text"
             variant="outlined"
             multiline
-            rows={4}
-            sx={{ m: 1 }}
-            name="message"
+            rows={2}
+            sx={{ width: '250px', m: 1 }}
+            name="issue"
             onChange={formik.handleChange}
-            error={formik.touched.message && Boolean(formik.errors.message)}
-            helperText={formik.touched.message && formik.errors.message}
+            error={formik.touched.issue && Boolean(formik.errors.issue)}
+            helperText={formik.touched.issue && formik.errors.issue}
             onBlur={formik.handleBlur}
           />
         </div>
@@ -94,9 +80,9 @@ const Videoconsult = ({ expert }) => {
           <Button
             size="large"
             variant="contained"
-            type="sumbit"
+            type="submit"
             sx={{ m: 1 }}
-            onClick={() => navigate(`/health-experts/payment/:${id}`)}
+            // onClick={() => navigate(`/health-experts/payment/:${id}`)}
           >
             Submit and Pay
           </Button>

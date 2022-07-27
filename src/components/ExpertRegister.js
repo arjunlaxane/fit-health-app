@@ -2,8 +2,9 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+
 import '../App.css';
+
 export const ExpertRegister = () => {
   const formik = useFormik({
     initialValues: {
@@ -25,7 +26,7 @@ export const ExpertRegister = () => {
       qualification: Yup.string().required('This is required'),
       specialization: Yup.string().required('This is required'),
       dezignation: Yup.string().required('This is required'),
-      gender: Yup.string().required('This is required'),
+      gender: Yup.string().required('Male/Female/Other?'),
       image: Yup.string().required('This is required'),
     }),
     onSubmit: values => {
@@ -35,18 +36,24 @@ export const ExpertRegister = () => {
 
   return (
     <div className="expert-register-container">
-      <Typography variant="h5 " mt={6} mb={6} textAlign="center">
+      <Typography variant="h6" sx={{ mt: 1, mb: 1, textAlign: 'center' }}>
         Register as fit health expert
       </Typography>
 
       <div className="expert-register-form">
         <Box component="form" onSubmit={formik.handleSubmit}>
           <div>
+            <p>
+              Choose dezignation as Doctor,Gym instructor,Zumba
+              instructor,Aurvedic expert,Homeopathic expert,Yoga
+              instructor,Pathology,Dietician.
+              <h5>One or more dezignations are allowed</h5>
+            </p>
             <TextField
-              label="Dezignation:Doctor/Gym instructor/Zumba instructor/Aurvedic expert/Homeopathic expert/Yoga instructor/Pathology/Dietician"
+              label="Dezignation"
               type="text"
               variant="outlined"
-              sx={{ width: '55vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="dezignation"
               onChange={formik.handleChange}
               error={
@@ -63,7 +70,7 @@ export const ExpertRegister = () => {
               label="First Name"
               type="text"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="first_name"
               onChange={formik.handleChange}
               error={
@@ -78,7 +85,7 @@ export const ExpertRegister = () => {
               label="Last Name"
               type="text"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="last_name"
               onChange={formik.handleChange}
               error={
@@ -93,7 +100,7 @@ export const ExpertRegister = () => {
               label="Email"
               type="email"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="email"
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
@@ -106,7 +113,7 @@ export const ExpertRegister = () => {
               label="Experience"
               type="number"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="experience"
               onChange={formik.handleChange}
               error={
@@ -121,7 +128,7 @@ export const ExpertRegister = () => {
               label="Gender:Male/Female/Others"
               type="text"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="gender"
               onChange={formik.handleChange}
               error={formik.touched.gender && Boolean(formik.errors.gender)}
@@ -134,7 +141,7 @@ export const ExpertRegister = () => {
               label="profile image link"
               type="text"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="image"
               onChange={formik.handleChange}
               error={formik.touched.image && Boolean(formik.errors.image)}
@@ -147,7 +154,7 @@ export const ExpertRegister = () => {
               label="Qualification"
               type="text"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="qualification"
               onChange={formik.handleChange}
               error={
@@ -165,7 +172,7 @@ export const ExpertRegister = () => {
               label="Specialization"
               type="text"
               variant="outlined"
-              sx={{ width: '20vw', m: 1 }}
+              sx={{ width: '250px', m: 1 }}
               name="specialization"
               onChange={formik.handleChange}
               error={

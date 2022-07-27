@@ -29,31 +29,37 @@ const Login = () => {
 
       <div className="form-container">
         <Box component="form" onSubmit={formik.handleSubmit}>
-          <div>
-            <TextField
-              label="Enter your Email ID"
-              type="email"
-              variant="outlined"
-              sx={{ width: '30vw', m: 1 }}
-              name="email"
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              onBlur={formik.handleBlur}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-          </div>
-          <div>
-            <TextField
-              label="Enter password"
-              type="text"
-              variant="outlined"
-              sx={{ width: '30vw', m: 1 }}
-              name="password"
-              onChange={formik.handleChange}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-              onBlur={formik.handleBlur}
-            />
+          <div className="textfield-login div">
+            <div>
+              <TextField
+                className="login-textfield"
+                label="Enter your Email ID"
+                type="email"
+                variant="outlined"
+                name="email"
+                onChange={formik.handleChange}
+                sx={{ mb: 1 }}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                onBlur={formik.handleBlur}
+                helperText={formik.touched.email && formik.errors.email}
+              />
+            </div>
+            <div>
+              <TextField
+                className="login-textfield"
+                label="Enter password"
+                type="text"
+                variant="outlined"
+                sx={{ mt: 1, mb: 1 }}
+                name="password"
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
+                onBlur={formik.handleBlur}
+              />
+            </div>
           </div>
           <div>
             <Link to="/">Forget Password ?</Link>
@@ -63,7 +69,7 @@ const Login = () => {
               size="large"
               variant="contained"
               type="sumbit"
-              sx={{ m: 1 }}
+              sx={{ m: 3 }}
               // onClick={() => navigate(`/`)}
             >
               Login

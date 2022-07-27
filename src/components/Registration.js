@@ -42,7 +42,7 @@ const Registration = () => {
               label="First Name"
               type="text"
               variant="outlined"
-              sx={{ width: '30vw', m: 1 }}
+              sx={{ m: 1 }}
               name="first_name"
               onChange={formik.handleChange}
               error={
@@ -57,7 +57,7 @@ const Registration = () => {
               label="Last Name"
               type="text"
               variant="outlined"
-              sx={{ width: '30vw', m: 1 }}
+              sx={{ m: 1 }}
               name="last_name"
               onChange={formik.handleChange}
               error={
@@ -72,7 +72,7 @@ const Registration = () => {
               label="Email ID"
               type="email"
               variant="outlined"
-              sx={{ width: '30vw', m: 1 }}
+              sx={{ m: 1 }}
               name="email"
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}
@@ -85,7 +85,7 @@ const Registration = () => {
               label="Password"
               type="text"
               variant="outlined"
-              sx={{ width: '30vw', m: 1 }}
+              sx={{ m: 1 }}
               name="password"
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}

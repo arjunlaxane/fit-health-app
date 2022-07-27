@@ -17,6 +17,9 @@ import Videoconsult from './components/Videoconsult';
 import Appointment from './components/Appointment';
 import Payment from './components/Payment';
 import { ExpertRegister } from './components/ExpertRegister';
+import Header from './components/Header';
+import ExpertsListing from './components/ExpertsListing';
+import { ExpertDetail } from './components/ExpertDetail';
 
 function App() {
   let Initial_Health_Experts = [
@@ -105,7 +108,7 @@ function App() {
 
   const [expert, setExpert] = React.useState(Initial_Health_Experts);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [mode, setMode] = React.useState('dark');
 
@@ -153,8 +156,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Paper elevation={4} style={{ minHeight: '100vh', borderRadius: '0px' }}>
-        <div className="App">
-          <AppBar position="sticky">
+        <React.Fragment>
+          <Header mode={mode} setMode={setMode} />
+          {/* <AppBar position="sticky">
             <Toolbar>
               <Button
                 color="inherit"
@@ -171,20 +175,6 @@ function App() {
               >
                 Find Health Experts and Tests
               </Button>
-
-              {/* 
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={top100Films}
-            sx={{ width: 300, height: 60 }}
-            renderInput={params => <TextField {...params} label="Movie" />}
-          /> */}
-              {/* <input
-              className="search-filter"
-              type="Search"
-              placeholder="Search.."
-            /> */}
 
               <Button
                 color="inherit"
@@ -205,17 +195,17 @@ function App() {
                 {mode === 'light' ? 'dark' : 'light'} mode
               </Button>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
 
           <section className="router-container">
             <Routes>
               <Route path="/" element={<Home />} />
 
+              <Route path="/health-experts" element={<ExpertsListing />} />
+
               <Route
-                path="/health-experts"
-                element={
-                  <Healthexperts expert={expert} setExpert={setExpert} />
-                }
+                path="/health-experts/:expertId"
+                element={<ExpertDetail />}
               />
 
               <Route path="/register" element={<Registration />} />
@@ -245,7 +235,7 @@ function App() {
               <Route path="/experts/register" element={<ExpertRegister />} />
             </Routes>
           </section>
-        </div>
+        </React.Fragment>
       </Paper>
     </ThemeProvider>
   );

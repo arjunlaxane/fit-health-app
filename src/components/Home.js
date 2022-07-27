@@ -1,5 +1,12 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
+import {
+  homeExperts,
+  removeHomeExperts,
+  setExperts,
+} from '../redux/actions/expertActions';
 
 const Home = () => {
   const services = [
@@ -58,26 +65,55 @@ const Home = () => {
       msg: 'doctoer',
     },
   ];
+  const dispatch = useDispatch();
+
+  const fetchHomeList = async () => {
+    const response = await axios
+      .get('https://62a97468ec36bf40bdb7b7fa.mockapi.io/fitnesshome')
+      .catch(err => {
+        console.log('err', err);
+      });
+
+    dispatch(setExperts(response.data));
+  };
+  useEffect(() => {
+    fetchHomeList();
+
+    return () => {
+      // dispatch(removeHomeExperts());
+    };
+  }, []);
+  const homeList = useSelector(state => state.allexperts.expert);
+  console.log(homeList);
+
+  const renderHomeLIst = homeList.map(list => {
+    const { id, designation, image } = list;
+
+    return (
+      <div className="service-container" key={id}>
+        <div className="container">
+          <img
+            className="services-image"
+            src={image}
+            alt="fithealth-services-image"
+          />
+          <div className="service-heading">
+            <h3 className="designation">{designation}</h3>
+          </div>
+        </div>
+      </div>
+    );
+  });
 
   return (
-    <div className="services">
-      <h1 className="service-heading">Our Services</h1>
-
-      <div className="service-container">
-        {services.map(service => (
-          <div className="container">
-            <img
-              className="services-image"
-              src={service.image}
-              alt="fithealth-services-image"
-            />
-            <div className="service-heading">
-              <h3 className="designation">{service.designation}</h3>
-            </div>
-          </div>
-        ))}
+    <>
+      <div className="services">
+        <h1 className="service-heading">Our Services</h1>
       </div>
-    </div>
+      <div className="main-service-container">
+        <>{renderHomeLIst}</>
+      </div>
+    </>
   );
 };
 
